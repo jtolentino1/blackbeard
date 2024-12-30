@@ -1,0 +1,81 @@
+/* globals.css */
+
+/* 1) Import a pirate-like font: "Pirata One" (Google Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+
+@import '@solana/wallet-adapter-react-ui/styles.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  Darker, more muted “pirate” palette
+*/
+:root {
+  --background: #1e1b17;  /* Dark, earthy brown */
+  --foreground: #f5f1e8;  /* Light parchment-like color */
+  --accent: #c8a267;      /* Muted golden accent */
+  --accent-hover: #b08c54;/* Darker gold for hover states */
+  --border: #4f3a29;      /* Brownish border */
+}
+
+/* Override body font & background */
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  color: var(--foreground);
+  background-color: var(--background);
+  /* Slight texture idea (optional): 
+     background-image: url('/images/parchment-texture.png');
+     background-size: cover;
+     background-repeat: no-repeat;
+  */
+}
+
+/* Example of removing wallet adapter icons if needed */
+.wallet-adapter-button-icon {
+  display: none !important;
+}
+
+/* Utility layers (unchanged, but no dark-mode logic) */
+@layer utilities {
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-in-out forwards;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 1.5s ease-in-out forwards;
+  }
+}
+
+@font-face {
+  font-family: 'Pirate One';
+  src: url('/fonts/PirateOne.ttf') format('truetype'); /* Adjust the path if necessary */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Add a custom class for Pirate One */
+.font-pirate {
+  font-family: 'Pirate One', sans-serif;
+}

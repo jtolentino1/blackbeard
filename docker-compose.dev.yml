@@ -1,0 +1,44 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" 
+    environment:
+      - NEXT_PUBLIC_BACKEND_HOST_URL=${DEV_BACKEND_HOST_URL}
+      - NEXT_PUBLIC_BACKEND_URL=${DEV_BACKEND_URL}
+      - NEXT_PUBLIC_SOLANA_NETWORK=${SOLANA_NETWORK}
+      - NEXT_PUBLIC_TREASURY_ADDRESS=${TREASURY_ADDRESS}
+      - NEXT_PUBLIC_SOFT_BURN_ADDRESS=${SOFT_BURN_ADDRESS}
+      - NEXT_PUBLIC_SOLANA_RPC_MAINNET=${SOLANA_RPC_MAINNET}
+      - ADMIN_API_KEY=${ADMIN_API_KEY}
+      - WATCHPACK_POLLING=true 
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "${PORT}:${PORT}" 
+    environment:
+      - PORT=${PORT}
+      - MONGODB_URI=${DEV_MONGODB_URI}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - SOLANA_NETWORK=${SOLANA_NETWORK}
+      - SOLANA_RPC_MAINNET=${SOLANA_RPC_MAINNET}
+      - NODE_ENV=development
+      - ADMIN_API_KEY=${ADMIN_API_KEY}
+      - TREASURY_ADDRESS=${TREASURY_ADDRESS}
+      - SOFT_BURN_ADDRESS=${SOFT_BURN_ADDRESS}
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run dev
