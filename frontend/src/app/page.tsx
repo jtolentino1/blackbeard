@@ -910,7 +910,7 @@ export default function ChatPage() {
                           ? `${stats.costPerAttempt.toFixed(4)} SOL`
                           : `${numeral(stats.tokenCostPerAttempt.toFixed(4)).format(
                               "0,0.0000"
-                            )} AGT`}
+                            )} BAI`}
                       </p>
                       {/* Payment Method Switch */}
                       <PaymentMethodSwitch />
