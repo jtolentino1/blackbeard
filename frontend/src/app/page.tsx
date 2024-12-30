@@ -694,14 +694,13 @@ export default function ChatPage() {
               </div>
 
               <div className="hidden lg:flex absolute inset-0 justify-center items-center pointer-events-none">
-                <a href="/" className="flex items-center pointer-events-auto text-3xl font-bold text-[#ffffff] hover:opacity-90 transition-opacity">
-                  <span className="pr-2">HackTheAI</span>
-                  <Image 
-                    src="/images/logo.png" 
-                    alt="Logo" 
-                    width={38} 
-                    height={38} 
-                  />
+                <a
+                  href="/"
+                  className="flex items-center pointer-events-auto text-xl 
+                            font-semibold text-[var(--foreground)] 
+                            hover:text-[var(--accent)] transition-colors font-pirate"
+                >
+                  <span className="pr-2">Blackbeard AI</span>
                 </a>
               </div>
 
